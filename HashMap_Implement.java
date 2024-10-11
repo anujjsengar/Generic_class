@@ -1,3 +1,10 @@
+/*This code implements a basic HashMap using chaining (linked list) to handle collisions, supporting generic keys and values (<K, V>).
+It provides three core functionalities: put, get, and containsKey.
+The underlying structure uses an ArrayList of Node objects, where each Node contains:
+
+A key of generic type K
+A value of generic type V
+A next pointer to handle chaining in case of collisions. */
 import java.util.*;
 public class HashMap_Implement<K,V> {
     public class Node{
