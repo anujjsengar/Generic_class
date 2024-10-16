@@ -94,6 +94,15 @@ public class HashMap_Implement<K,V> {
         int idx=key.hashCode();
         return table.get(idx%table.size()).value;
     }
+    public void display(){
+        for(Node n:table){
+            while(n!=null){
+                System.out.println(n.key+" "+n.value);
+                n=n.next;
+            }
+        }
+
+    }
     public boolean containsKey(K key){
         int idx=key.hashCode()%table.size();
         Node temp=table.get(idx);
@@ -113,6 +122,7 @@ public class HashMap_Implement<K,V> {
         map.put(3,2);
         System.out.println(map.get(1));
         System.out.println(map.get(2));
+        map.display();
         System.out.println(map.containsKey(1));
         System.out.println(map.containsKey(3));
         System.out.println(map.containsKey(5));
@@ -122,5 +132,6 @@ public class HashMap_Implement<K,V> {
         map.remove(2);
         map.remove(3);
         System.out.println(map.size());
+        map.display();
     }
 }
