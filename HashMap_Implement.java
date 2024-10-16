@@ -17,6 +17,7 @@ public class HashMap_Implement<K,V> {
         }
     }
     ArrayList<Node> table;
+    int size=0;
     public HashMap_Implement(int size){
         table=new ArrayList<>(10);
         for(int i=0;i<size;i++){
@@ -39,6 +40,10 @@ public class HashMap_Implement<K,V> {
         Node nn=new Node(key,value);
         table.set(idx,nn);
         nn.next=temp;
+        size++;
+    }
+    public int size(){
+        return size;
     }
     public V get(K key){
         int idx=key.hashCode();
@@ -56,7 +61,7 @@ public class HashMap_Implement<K,V> {
         return false;
     }
     public static void main(String args[]){
-        HashMap_Implement<Integer,Integer> map=new HashMap_Implement<>(4);
+        HashMap_Implement<Integer,Integer> map=new HashMap_Implement<>(10);
         map.put(1,1);
         map.put(1,2);
         map.put(2,1);
@@ -66,5 +71,6 @@ public class HashMap_Implement<K,V> {
         System.out.println(map.containsKey(1));
         System.out.println(map.containsKey(3));
         System.out.println(map.containsKey(5));
+        System.out.println(map.size());
     }
 }
