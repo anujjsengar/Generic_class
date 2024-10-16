@@ -41,6 +41,26 @@ public class HashMap_Implement<K,V> {
         table.set(idx,nn);
         nn.next=temp;
         size++;
+        int lf=size/table.size();
+        int thf=2;
+        if(lf>thf){
+            rehashing();
+        }
+    }
+    private void rehashing(){
+        ArrayList<Node> nt=new ArrayList<>();
+        for(int i=0;i<2*table.size();i++){
+            nt.add(null);
+        }
+        ArrayList<Node> ot=this.table;
+        this.table=nt;
+        for(Node n: ot){
+            while(n!=null){
+                put(n.key,n.value);
+                n=n.next;
+            }
+        }
+
     }
     public int size(){
         return size;
