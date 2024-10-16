@@ -25,7 +25,7 @@ public class HashMap_Implement<K,V> {
     }
     public HashMap_Implement(){
         this(4);
-    }
+    } 
     public void put(K key,V value){
         int idx=key.hashCode()%table.size();
         Node temp=table.get(idx);
@@ -42,7 +42,7 @@ public class HashMap_Implement<K,V> {
     }
     public V get(K key){
         int idx=key.hashCode();
-        return table.get(idx%table.size()).val;
+        return table.get(idx%table.size()).value;
     }
     public boolean containsKey(K key){
         int idx=key.hashCode();
@@ -56,7 +56,7 @@ public class HashMap_Implement<K,V> {
         return false;
     }
     public static void main(String args[]){
-        Generic_Class<Integer,Integer> map=new Generic_Class<>(4);
+        HashMap_Implement<Integer,Integer> map=new HashMap_Implement<>(4);
         map.put(1,1);
         map.put(1,2);
         map.put(2,1);
