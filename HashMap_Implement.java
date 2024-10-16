@@ -62,6 +62,31 @@ public class HashMap_Implement<K,V> {
         }
 
     }
+    public void remove(K key) {
+        int idx = key.hashCode() % table.size();
+        Node temp = table.get(idx);
+        
+        if (temp == null) {
+            return;
+        }
+        
+        if (temp.key.equals(key)) {
+            table.set(idx, temp.next);
+            size--;
+            return;
+        }
+        
+        Node prev = null;
+        while (temp != null) {
+            if (temp.key.equals(key)) {
+                size--;
+                prev.next = temp.next;
+                return;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+    }
     public int size(){
         return size;
     }
@@ -91,6 +116,11 @@ public class HashMap_Implement<K,V> {
         System.out.println(map.containsKey(1));
         System.out.println(map.containsKey(3));
         System.out.println(map.containsKey(5));
+        System.out.println(map.size());
+        map.remove(1);
+        System.out.println(map.containsKey(1));
+        map.remove(2);
+        map.remove(3);
         System.out.println(map.size());
     }
 }
